@@ -23,23 +23,26 @@ const Dashboard = () => {
   console.log(discountDistribution)
   console.log(categoryWiseAverageRating)
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+
   useEffect(()=> {
-    fetch(`http://localhost:3000/products/getTopReviewdProduct`)
+    fetch(`${API_BASE_URL}/products/getTopReviewdProduct`)
     .then((resp) => resp.json())
     .then(data => setTopReviewedProduct(data))
   }, []) 
   useEffect(()=> {
-    fetch(`http://localhost:3000/products/getProductPerCategory`)
+    fetch(`${API_BASE_URL}/products/getProductPerCategory`)
     .then((resp) => resp.json())
     .then(data => setProductPerCategory(data))
   }, []) 
   useEffect(()=> {
-    fetch(`http://localhost:3000/products/getDiscountDistribution`)
+    fetch(`${API_BASE_URL}/products/getDiscountDistribution`)
     .then((resp) => resp.json())
     .then(data => setDiscountDistribution(data))
   }, []) 
   useEffect(()=> {
-    fetch(`http://localhost:3000/products/getCategoryWiseAverageRating`)
+    fetch(`${API_BASE_URL}/products/getCategoryWiseAverageRating`)
     .then((resp) => resp.json())
     .then(data => setCategoryWiseAverageRating(data))
   }, [])
