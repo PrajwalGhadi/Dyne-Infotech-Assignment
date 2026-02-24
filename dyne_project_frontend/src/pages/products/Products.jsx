@@ -50,7 +50,7 @@ const Products = () => {
             value={search}
           />
 
-          <div className="flex gap-10 w-[30%]">
+          <div className="flex lg:justify-start justify-between lg:w-[30%] w-1/2">
             {/* Filter Button on the basis of product_id, category and id */}
             <div className="w-[25%] lg:w-[35%] flex justify-items-start relative select-none">
               <IoFilter
@@ -65,6 +65,7 @@ const Products = () => {
                       className={`${sortBy === item ? "text-red-400 border-b-2" : "text-black"} pb-1 rounded-b-lg px-2 cursor-p`}
                       onClick={() => {
                         setSortBy(item);
+                        setSortButtonToggle((prev) => !prev)
                       }}
                     >
                       {item}
@@ -75,7 +76,7 @@ const Products = () => {
             </div>
 
             {/* Filter based on limit */}
-            <div className="w-[15%] lg:w-[35%] flex justify-items-start relative select-none">
+            <div className="w-[25%] lg:w-[35%] flex justify-items-start relative select-none">
               <div className="lg:w-[3.5vw] lg:h-[2vw] h-[10vw] bg-white text-black flex items-center p-2 text-xl rounded-lg">
                 <p>{limit}</p>{" "}
                 <RiArrowDropDownLine
@@ -84,13 +85,14 @@ const Products = () => {
                 />
               </div>
               {limitButtonToggle ? (
-                <div className="absolute bg-gray-200 w-[15vw] lg:w-[8vw] min-h-[5vw] top-10 flex flex-col gap-3 rounded-lg p-2">
+                <div className="absolute bg-gray-200 w-[20vw] lg:w-[8vw] min-h-[5vw] top-10 flex flex-col gap-3 rounded-lg p-2">
                   {limitList.map((item, index) => (
                     <p
                       key={index}
                       className={`${limit === item ? "text-red-400 border-b-2" : "text-black"} pb-1 rounded-b-lg px-2 cursor-p`}
                       onClick={() => {
                         setLimit(item);
+                        setLimitButtonToggle((prev) => !prev)
                       }}
                     >
                       {item}
@@ -101,7 +103,7 @@ const Products = () => {
             </div>
           </div>
 
-          <button className="w-[10%]  p-4 rounded-md bg-[#2563EB] flex justify-between items-center gap-1">
+          <button className="w-[35%] lg:w-fit p-4 rounded-md bg-[#2563EB] flex justify-between items-center gap-1">
             <MdOutlineFileDownload className="text-2xl" />
             <span>Export CSV</span>
           </button>
